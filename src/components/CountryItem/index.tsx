@@ -12,7 +12,7 @@ interface Props {
 export const CountryItem = ({name, population, region, capital, flag}: Props) => {
     return (
         <C.CountryItem>
-            <Link to={`/country/${capital}`}>
+            <Link to={`/country/${name}`}>
                 <div className='img--area'>
                     <img src={flag} alt={`Bandeira do País: ${name}`} />
                 </div>

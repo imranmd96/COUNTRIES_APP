@@ -1,5 +1,6 @@
 import * as C from './styles'
 import { useEffect, useState } from 'react'
+import { Input } from '../../components/Input'
 import { api } from '../../api'
 import { CountryItem } from '../../components/CountryItem'
 
@@ -30,22 +31,25 @@ export const Countries = () => {
     }
 
     return (
-        <C.Countries>
-            {loading &&
-                <div>Carregando...</div>
-            }
-            {!loading &&
-                countries.map((item) => (
-                    <CountryItem
-                        key={item.numericCode}
-                        name={item.name}
-                        population={item.population}
-                        region={item.region}
-                        capital={item.capital}
-                        flag={item.flags.png}
-                    />
-                ))
-            }
-        </C.Countries>
+        <C.CountriesArea>
+            <Input />
+            <div className='countries'>
+                {loading &&
+                    <div>Carregando...</div>
+                }
+                {!loading &&
+                    countries.map((item) => (
+                        <CountryItem
+                            key={item.numericCode}
+                            name={item.name}
+                            population={item.population}
+                            region={item.region}
+                            capital={item.capital}
+                            flag={item.flags.png}
+                        />
+                    ))
+                }
+            </div>
+        </C.CountriesArea>
     )
 }

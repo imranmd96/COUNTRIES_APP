@@ -5,6 +5,6 @@ import { CountryPage } from "../pages/CountryPage";
 export const MainRoutes = () => {
     return useRoutes([
         {path:'/', element: <Countries />},
-        {path:'/country/:capital', element: <CountryPage />}
+        {path:'/country/:name', element: <CountryPage />}
     ])
 }

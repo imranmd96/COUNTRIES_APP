@@ -1,13 +1,11 @@
 import { Header } from './components/Header';
-import { Input } from './components/Input';
-import { Countries } from './pages/Countries';
+import { MainRoutes } from './Routes/MainRoutes';
 
 function App() {
 	return (
 		<>
 			<Header />
-			<Input />
-			<Countries />
+			<MainRoutes />
 		</>
 	);
 }
