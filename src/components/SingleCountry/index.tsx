@@ -1,4 +1,5 @@
 import * as C from './styles'
+import { Link } from 'react-router-dom'
 
 interface Props {
     name: string,
@@ -46,7 +47,7 @@ export const SingleCountry = ({
                 </div>
                 <div className='border--area'>
                     <p>Border Countries: </p>
-                    <div className='borders'>{borders && borders.map((item, index) => <div key={index}>{item}</div>)}</div> 
+                    <div className='borders'>{borders && borders.map((item, index) => <Link to={`/code/${item}`} key={index}>{item}</Link>)}</div> 
                 </div>
             </div>
         </C.CountryData>

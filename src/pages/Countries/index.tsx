@@ -1,5 +1,5 @@
 import * as C from './styles'
-import { useEffect, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { Input } from '../../components/Input'
 import { api } from '../../api'
 import { CountryItem } from '../../components/CountryItem'
@@ -16,8 +16,10 @@ interface Countries {
 }
 
 export const Countries = () => {
-    const [countries, setCountries] = useState<Countries[]>([])
     const [loading, setLoading] = useState(false)
+    const [countries, setCountries] = useState<Countries[]>([])
+    const [search, setSearch] = useState('')
+
 
     useEffect(() => {
         getAllCountries()
@@ -30,15 +32,24 @@ export const Countries = () => {
         setLoading(false)
     }
 
+    const lowerSearch = search.toLowerCase()
+
+    const filteredCountries = countries.filter(country => country
+        .name.toLowerCase().includes(lowerSearch) || country.
+        region.toLowerCase().includes(lowerSearch));
+
     return (
         <C.CountriesArea>
-            <Input />
+            <Input
+                value={search}
+                search={setSearch}
+            />
             <div className='countries'>
                 {loading &&
                     <div>Carregando...</div>
                 }
                 {!loading &&
-                    countries.map((item) => (
+                    filteredCountries.map((item) => (
                         <CountryItem
                             key={item.numericCode}
                             name={item.name}

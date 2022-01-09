@@ -34,7 +34,7 @@ interface Country {
 }
 
 export const CountryPage = () => {
-    const { name } = useParams()
+    const { name, code } = useParams()
 
     const [loading, setLoading] = useState(false)
     const [country, setCountry] = useState<Country[]>([])
@@ -42,12 +42,14 @@ export const CountryPage = () => {
     useEffect(() => {
         if(name) {
             getCountry(name)
-        } 
-    }, [name])
+        } else if(code) {
+            getCountry(code)
+        }
+    }, [name, code])
 
-    const getCountry = async (name: string) => {
+    const getCountry = async (param: string) => {
         setLoading(true)
-        let country = await api.getCountry(name)
+        let country = name ? await api.getCountry(param) : await api.getCountryByCode(param)
         setCountry(country)
         setLoading(false)
     }

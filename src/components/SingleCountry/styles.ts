@@ -47,7 +47,9 @@ export const CountryData = styled.div`
                 grid-gap: 5px;
                 width: 100%;
 
-                div {
+                a {
+                    text-decoration: none;
+                    color: #000;
                     display: flex;
                     min-height: 25px;
                     justify-content: center;
