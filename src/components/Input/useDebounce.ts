@@ -1,14 +1,14 @@
 import { useRef } from "react";
 
 export default function useDebounce(search: Function, delay: number){
-    let timeout: any = useRef(null);
+    let timeout: {current: NodeJS.Timeout | null} = useRef(null);
 
-    function debouncedFn(...params: any) {
-        window.clearTimeout(timeout.current)
-        timeout.current = window.setTimeout(() => {
+    function debounced(...params: any) {
+        timeout.current && clearTimeout(timeout.current)
+        timeout.current = setTimeout(() => {
             search(...params)
         }, delay)
     }
 
-    return debouncedFn
+    return debounced
 }
