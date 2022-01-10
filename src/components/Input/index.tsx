@@ -7,8 +7,10 @@ import useDebounce from './useDebounce'
 
 export const Input = ({value, search}: InputTS) => {
     const { state } = useForm()
+
     const [input, setInput] = useState('')
-    const delay: number = 500
+    
+    const delay = 500
     const deboucedChange = useDebounce(search, delay)
 
     const handleChange = (e: string) => {
