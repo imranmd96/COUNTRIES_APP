@@ -1,12 +1,19 @@
 import { InputTS } from '../../types/Input'
 import * as C from './styles'
 import { useForm } from '../../contexts/ThemeContext'
+import { useState } from 'react'
+import useDebounce from './useDebounce'
 
 
 export const Input = ({value, search}: InputTS) => {
     const { state } = useForm()
+    const [input, setInput] = useState('')
+    const delay: number = 500
+    const deboucedChange = useDebounce(search, delay)
+
     const handleChange = (e: string) => {
-        search(e)
+        deboucedChange(e)
+        setInput(e)
     }
 
     return (
@@ -14,7 +21,7 @@ export const Input = ({value, search}: InputTS) => {
             <input
                 type="text"
                 placeholder="Search By Country"
-                value={value}
+                value={input}
                 onChange={e => handleChange(e.target.value)}
             />
             <select value="Filter by Region" onChange={e => handleChange(e.target.value)}>
