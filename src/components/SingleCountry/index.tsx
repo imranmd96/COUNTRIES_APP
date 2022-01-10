@@ -1,23 +1,7 @@
 import * as C from './styles'
+import { SingleCountryTS } from '../../types/SingleCountry'
 import { Link } from 'react-router-dom'
-
-interface Props {
-    name: string,
-    nativeName: string,
-    population: number,
-    region: string,
-    subregion: string,
-    capital: string,
-    topLevelDomain: string,
-    currencie: string,
-    languages: [{
-        name: string
-    }],
-    flag: string,
-    borders: [
-        string
-    ]
-}
+import { useForm } from '../../contexts/ThemeContext'
 
 export const SingleCountry = ({
     name,
@@ -30,9 +14,10 @@ export const SingleCountry = ({
     languages,
     borders,
     flag
-}: Props) => {
+}: SingleCountryTS) => {
+    const { state } = useForm()
     return (
-        <C.CountryData>
+        <C.CountryData theme={state.theme}>
             <img src={flag} alt={`Bandeira do País: ${name}`} />
             <div className='data--area'>
                 <h1>{name}</h1>
@@ -45,10 +30,12 @@ export const SingleCountry = ({
                     <p><span>Currencies: </span>{currencie}</p>
                     <p><span>Languages: </span>{languages.map((item, index)=>(<span className='language' key={index}>{item.name}</span>))}</p>
                 </div>
-                <div className='border--area'>
-                    <p>Border Countries: </p>
-                    <div className='borders'>{borders && borders.map((item, index) => <Link to={`/code/${item}`} key={index}>{item}</Link>)}</div> 
-                </div>
+                {borders &&
+                    <div className='border--area'>
+                        <p>Border Countries: </p>
+                        <div className='borders'>{borders.map((item, index) => <Link to={`/code/${item}`} key={index}>{item}</Link>)}</div> 
+                    </div>
+                }
             </div>
         </C.CountryData>
     )

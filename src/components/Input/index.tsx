@@ -1,19 +1,16 @@
-import { ChangeEvent, useState } from 'react'
+import { InputTS } from '../../types/Input'
 import * as C from './styles'
+import { useForm } from '../../contexts/ThemeContext'
 
-interface Props {
-    value: string,
-    search: (e: string) => void
-}
 
-export const Input = ({value, search}: Props) => {
-    
+export const Input = ({value, search}: InputTS) => {
+    const { state } = useForm()
     const handleChange = (e: string) => {
         search(e)
     }
 
     return (
-        <C.InputArea>
+        <C.InputArea theme={state.theme}>
             <input
                 type="text"
                 placeholder="Search By Country"

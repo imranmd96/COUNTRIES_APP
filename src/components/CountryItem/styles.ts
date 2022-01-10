@@ -1,7 +1,8 @@
 import styled from "styled-components";
 
-export const CountryItem = styled.div`
-    background-color: #FFF;
+export const CountryItem = styled.div<{theme: string}>`
+    background-color: ${props => props.theme === 'light' ? '#FFF' : 'rgb(43, 55, 67)'};
+    transition: all ease 0.2s;
     box-shadow: 2px 2px 1em rgba(0, 0, 0, 0.2);
     border-radius: 4px;
     a {
@@ -17,6 +18,7 @@ export const CountryItem = styled.div`
         }
     }
     .data--area {
+        color: ${props => props.theme === 'light' ? '#000' : '#FFF'};
         padding: 10px 20px;
         p {
             font-size: 13px;

@@ -1,17 +1,13 @@
 import * as C from './styles'
+import { CountryItemTS } from '../../types/CountryItem'
 import { Link } from 'react-router-dom'
+import { useForm } from '../../contexts/ThemeContext'
 
-interface Props {
-    name: string,
-    capital: string,
-    population: number,
-    region: string,
-    flag: string
-}
+export const CountryItem = ({name, population, region, capital, flag}: CountryItemTS) => {
+    const {state} = useForm()
 
-export const CountryItem = ({name, population, region, capital, flag}: Props) => {
     return (
-        <C.CountryItem>
+        <C.CountryItem theme={state.theme}>
             <Link to={`/country/${name}`}>
                 <div className='img--area'>
                     <img src={flag} alt={`Bandeira do País: ${name}`} />

@@ -1,11 +1,22 @@
 import * as C from './styles'
+import { useForm } from '../../contexts/ThemeContext'
+import { FormActions } from '../../contexts/ThemeContext'
 
 export const Header = () => {
+    const { state, dispatch } = useForm()
+
+    const handleChangeTheme = () => {
+        dispatch({
+            type: FormActions.setTheme,
+            payload: state.theme === 'light' ? 'dark' : 'light'
+        })
+    }
+    
     return (
-        <C.Header>
+        <C.Header theme={state.theme}>
             <div className='container'>
                 <h1>Where In the World?</h1>
-                <p>Dark Mode</p>
+                <p onClick={handleChangeTheme}>Dark Mode</p>
             </div>
         </C.Header>
     )

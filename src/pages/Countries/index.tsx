@@ -1,24 +1,20 @@
 import * as C from './styles'
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useState } from 'react'
+import { CountriesTS } from '../../types/Countries'
 import { Input } from '../../components/Input'
 import { api } from '../../api'
 import { CountryItem } from '../../components/CountryItem'
+import Pagination from './Pagination'
+import { useForm } from '../../contexts/ThemeContext'
 
-interface Countries {
-    name: string,
-    capital: string,
-    population: number,
-    region: string,
-    numericCode: string,
-    flags: {
-        png: string
-    }
-}
+const LIMIT = 12;
 
 export const Countries = () => {
+    const { state } = useForm()
     const [loading, setLoading] = useState(false)
-    const [countries, setCountries] = useState<Countries[]>([])
+    const [countries, setCountries] = useState<CountriesTS[]>([])
     const [search, setSearch] = useState('')
+    const [offset, setOffset] = useState(0);
 
 
     useEffect(() => {
@@ -38,18 +34,20 @@ export const Countries = () => {
         .name.toLowerCase().includes(lowerSearch) || country.
         region.toLowerCase().includes(lowerSearch));
 
+    const pagCountries = filteredCountries.slice(offset, offset+12)
+
     return (
-        <C.CountriesArea>
+        <C.CountriesArea theme={state.theme}>
             <Input
                 value={search}
                 search={setSearch}
             />
             <div className='countries'>
                 {loading &&
-                    <div>Carregando...</div>
+                    <div className='loading'>Carregando...</div>
                 }
                 {!loading &&
-                    filteredCountries.map((item) => (
+                    pagCountries.map((item) => (
                         <CountryItem
                             key={item.numericCode}
                             name={item.name}
@@ -61,6 +59,12 @@ export const Countries = () => {
                     ))
                 }
             </div>
+            <Pagination
+                limit={LIMIT}
+                total={filteredCountries.length}
+                offset={offset}
+                setOffset={setOffset}
+            />
         </C.CountriesArea>
     )
 }
