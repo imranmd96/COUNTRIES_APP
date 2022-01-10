@@ -1,6 +1,6 @@
 import { PaginationTS } from "../../types/Pagination";
 
-const MAX_ITEMS = 5;
+const MAX_ITEMS = 3;
 const MAX_LEFT = (MAX_ITEMS - 1) / 2;
 
 const Pagination = ({ limit,total, offset, setOffset }: PaginationTS) => {

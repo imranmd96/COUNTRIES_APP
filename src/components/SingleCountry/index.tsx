@@ -26,7 +26,7 @@ export const SingleCountry = ({
                     <p><span>Population: </span>{population}</p>
                     <p><span>Region: </span>{region}</p>
                     <p><span>Capital: </span>{capital}</p>
-                    <p><span>Top Level Domain: </span>{topLevelDomain}</p>
+                    <p className='topLevel'><span>Top Level Domain: </span>{topLevelDomain}</p>
                     <p><span>Currencies: </span>{currencie}</p>
                     <p><span>Languages: </span>{languages.map((item, index)=>(<span className='language' key={index}>{item.name}</span>))}</p>
                 </div>

@@ -10,6 +10,7 @@ export const CountryPage = styled.main`
         padding: 40px 0px;
 
         .loading {
+            min-height: 100vh;
             color: ${props => props.theme === 'light' ? '' : '#FFF'};
         }
     }
@@ -24,6 +25,26 @@ export const CountryPage = styled.main`
         width: 120px;
         height: 40px;
         box-shadow: 1px 1px 1em rgba(0, 0, 0, 0.2)
+    }
+
+    @media(min-width: 768px) and (max-width: 1023px){
+        & {
+            padding: 20px;
+        }
+        .container {
+            width: auto
+        }
+    }
+
+    @media(max-width: 767px) {
+        & {
+            height: auto;
+            padding: 20px;
+        }
+        .container {
+            width: auto;
+            padding: 20px 0px;
+        }
     }
 
 `

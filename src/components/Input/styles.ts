@@ -36,4 +36,36 @@ export const InputArea = styled.section<{theme: string}>`
         background-color: ${props => props.theme === 'light' ? '' : 'rgb(43, 55, 67)'};
         color: ${props => props.theme === 'light' ? '#000' : '#FFF'};
     }
+
+    @media(max-width: 1024px) {
+        & {
+            width: auto;
+            padding: 20px;
+        }
+    }
+
+    @media(max-width: 768px) {
+        & {
+            flex-direction: column;
+            select {
+                margin-top: 10px;
+                height: 50px;
+                width: max-content;
+            }
+        }
+    }
+
+    @media(max-width: 768px) {
+        & {
+            flex-direction: column;
+            input {
+                width: 97%
+            }
+            select {
+                margin-top: 10px;
+                height: 50px;
+                width: max-content;
+            }
+        }
+    }
 `
