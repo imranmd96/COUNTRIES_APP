@@ -38,7 +38,7 @@ export const CountryPage = styled.main`
 
     @media(max-width: 767px) {
         & {
-            height: auto;
+            height: max-content;
             padding: 20px;
         }
         .container {
