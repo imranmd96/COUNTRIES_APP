@@ -8,6 +8,7 @@ export const SingleCountry = ({
     nativeName,
     population,
     region,
+    subregion,
     capital,
     topLevelDomain,
     currencie,
@@ -25,9 +26,14 @@ export const SingleCountry = ({
                     <p><span>Native Name: </span>{nativeName}</p>
                     <p><span>Population: </span>{population}</p>
                     <p><span>Region: </span>{region}</p>
-                    <p><span>Capital: </span>{capital}</p>
+                    <p><span>Subregion: </span>{subregion}</p>
+                    {capital &&
+                        <p><span>Capital: </span>{capital}</p>
+                    }
                     <p className='topLevel'><span>Top Level Domain: </span>{topLevelDomain}</p>
-                    <p><span>Currencies: </span>{currencie}</p>
+                    {currencie &&
+                        <p><span>Currencies: </span>{currencie.map(item => item.name)}</p>
+                    }
                     <p><span>Languages: </span>{languages.map((item, index)=>(<span className='language' key={index}>{item.name}</span>))}</p>
                 </div>
                 {borders &&

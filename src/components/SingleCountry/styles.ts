@@ -33,7 +33,8 @@ export const CountryData = styled.div`
             }
             
             .language {
-                font-weight: normal
+                font-weight: normal;
+                margin-right: 5px
             }
         }
 

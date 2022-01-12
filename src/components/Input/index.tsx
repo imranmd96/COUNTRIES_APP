@@ -4,13 +4,13 @@ import { useForm } from '../../contexts/ThemeContext'
 import { useState } from 'react'
 import useDebounce from './useDebounce'
 
+const delay = 500
 
 export const Input = ({value, search}: InputTS) => {
     const { state } = useForm()
 
     const [input, setInput] = useState('')
     
-    const delay = 500
     const deboucedChange = useDebounce(search, delay)
 
     const handleChange = (e: string) => {

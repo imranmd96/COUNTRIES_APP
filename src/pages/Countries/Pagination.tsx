@@ -17,36 +17,36 @@ const Pagination = ({ limit,total, offset, setOffset }: PaginationTS) => {
   }
 
   return (
-    <ul className="pagination">
-      <li>
-        <button
-          onClick={() => onPageChange(current - 1)}
-          disabled={current === 1}
-        >
-          &lt;
-        </button>
-      </li>
-      {Array.from({ length: Math.min(MAX_ITEMS, pages) })
-        .map((_, index) => index + first)
-        .map((page) => (
-          <li key={page}>
-            <button
-              onClick={() => onPageChange(page)}
-              className={ page === current ? 'active' : ''}
-            >
-              {page}
-            </button>
-          </li>
-        ))}
-      <li>
-        <button
-          onClick={() => onPageChange(current + 1)}
-          disabled={current === pages}
-        >
-          &gt;
-        </button>
-      </li>
-    </ul>
+		<ul className="pagination">
+		<li>
+			<button
+			onClick={() => onPageChange(current - 1)}
+			disabled={current === 1}
+			>
+			&lt;
+			</button>
+		</li>
+		{Array.from({ length: Math.min(MAX_ITEMS, pages) })
+			.map((_, index) => index + first)
+			.map((page) => (
+			<li key={page}>
+				<button
+				onClick={() => onPageChange(page)}
+				className={ page === current ? 'active' : ''}
+				>
+				{page}
+				</button>
+			</li>
+			))}
+		<li>
+			<button
+			onClick={() => onPageChange(current + 1)}
+			disabled={current === pages}
+			>
+			&gt;
+			</button>
+		</li>
+		</ul>
   );
 };
 

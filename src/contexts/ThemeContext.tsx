@@ -1,61 +1,57 @@
 import { createContext, useContext, useReducer } from "react";
 
-interface State {
+interface State { //terceiro
     theme: string
 }
 
-interface Action {
-    type: FormActions,
+interface Actions { //quinto
+    type: themeActions,
     payload: any
 }
 
-interface Provider {
+interface Provider { //oitavo
     children: JSX.Element
 }
 
 interface ContextType {
     state: State,
-    dispatch: (action: Action) => void
+    dispatch: (action: Actions) => void
 }
 
 
 const initialData: State = {
     theme: 'dark'
-}
+} //segundo
 
-//context
+const ThemeContext = createContext<ContextType | undefined>(undefined)  //primeiro
 
-const FormContext = createContext<ContextType | undefined>(undefined)
-
-//reducer
-
-export enum FormActions {
+export enum themeActions {
     setTheme,
-}
+} //quarto
 
-const reducer = (state: State, action: Action) => {
+const reducer = (state: State, action: Actions) => { //sexto
     switch(action.type) {
-        case FormActions.setTheme:
+        case themeActions.setTheme:
             return {...state, theme: action.payload}
         break
     }
 }
 
-export const FormProvider = ({children}: Provider) => {
+export const ThemeProvider = ({children}: Provider) => { //setimo
     const [state, dispatch] = useReducer(reducer, initialData);
     const value = {state, dispatch}
 
     return (
-        <FormContext.Provider value={value}>
+        <ThemeContext.Provider value={value}>
             {children}
-        </FormContext.Provider>
+        </ThemeContext.Provider>
     )
 }
 
-export const useForm = () => {
-    const context = useContext(FormContext)
+export const useForm = () => { //nono
+    const context = useContext(ThemeContext)
     if(context === undefined) {
-        throw new Error('useForm precisa ser usado dentro do FormProvider')
+        throw new Error('useForm needs to be used inside the ThemeProvider')
     }
     return context
 }

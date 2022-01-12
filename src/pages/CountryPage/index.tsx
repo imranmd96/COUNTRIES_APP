@@ -46,7 +46,7 @@ export const CountryPage = () => {
                             subregion={item.subregion}
                             capital={item.capital}
                             topLevelDomain={item.topLevelDomain[0]}
-                            currencie={item.currencies && item.currencies[0].name}
+                            currencie={item.currencies && item.currencies}
                             languages={item.languages}
                             borders={item.borders}
                         />
