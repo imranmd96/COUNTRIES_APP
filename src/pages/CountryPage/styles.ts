@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const CountryPage = styled.main`
-    height: calc(100vh - 90px);
+    min-height: calc(100vh - 90px);
     background-color: ${props => props.theme === 'light' ? '' : 'rgb(32, 45, 54)'};
     transition: all ease 0.2s;
     .container {

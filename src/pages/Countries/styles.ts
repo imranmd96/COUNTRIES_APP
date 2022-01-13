@@ -52,7 +52,7 @@ export const CountriesArea = styled.main<{theme: string}>`
         }
     }
 
-    @media(max-width: 540px) {
+    @media(max-width: 440px) {
         .countries {
             grid-template-columns: 1fr;
         }
