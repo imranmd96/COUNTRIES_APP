@@ -2,7 +2,7 @@
 
 
 <h2>Sobre</h2>
-</>Link da Aplicação: https://admiring-clarke-c78499.netlify.app/</p>
+<p>Link da Aplicação: https://admiring-clarke-c78499.netlify.app/</p>
 <p> Veja informações sobre vários países na tela inicial, filtre pelo nome e região, e <br/>
 se você se interessar em saber mais sobre algum país específico, clique nele e veja mais informações!
 </p>
