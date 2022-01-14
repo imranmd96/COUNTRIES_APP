@@ -51,7 +51,7 @@ npm start
 - Styled-components
 - React-Router
 - Hooks
-- Redux (contextAPI) 
+- contextAPI
 
 ---
 
